@@ -19,25 +19,124 @@
     <title>Home</title>
   </head>
   <body>
-    <!--make it all responsive-->
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-light navbar-expand-md bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand me-auto" href="#aboutMe">About Me</a>
-        <a class="navbar-brand me-auto" href="#portfolio">Portfolio</a>
-        <a class="navbar-brand me-auto" href="#links">Links</a>
-        <div class="col-8"></div>
+        <a class="navbar-brand text-light" href="#">Home</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link activej text-light"
+                aria-current="page"
+                href="#aboutMe"
+              >
+                About Me
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-light"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Portfolio
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">C#</a></li>
+                <li><a class="dropdown-item" href="#">JavaScript</a></li>
+                <li><a class="dropdown-item" href="#">Java</a></li>
+                <li><a class="dropdown-item" href="#">PHP</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#contactMe">Contact Me</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
-    <div id="aboutMe">
-      <h1 class="text-center">About Me</h1>
+    <div class="bg-dark pb-3" id="aboutMe">
+      <h1 class="text-center text-light py-3">About Me</h1>
+      <div class="container-fluid col-6 col-sm-4 col-lg-3 col-xl-2">
+        <img src="pic.JPG" class="rounded-circle img-fluid" />
+      </div>
+      <p class="container-fluid text-light col-8 pt-4">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
+        perferendis labore non nisi minus itaque! Laborum voluptatem explicabo
+        ratione dolor aspernatur esse animi eligendi soluta, quis cum
+        necessitatibus, commodi tenetur!
+      </p>
       <!--pic, hey name max, skill bar chart?-->
     </div>
-    <div class="bg-dark" id="portfolio">
-      <h1 class="text-center text-light">Portfolio</h1>
+    <div id="portfolio">
+      <h1 class="text-center pt-1">Portfolio</h1>
       <!--organize by class/language, change portfolio navbar to dropdown-->
     </div>
-    <div id="links">
+    <div class="bg-dark pb-5" id="contactMe">
       <!--linkedin, github, email, apple music-->
+      <h1 class="text-center text-light pt-1">Contact Me</h1>
+      <div class="container-fluid col-6">
+        <ul class="list-group">
+          <a
+            href="mailto: max.maillet2002@gmail.com"
+            class="list-group-item list-group-item-action border-secondary"
+          >
+            <img
+              src="https://pic.onlinewebfonts.com/svg/img_533640.png"
+              width="32"
+              height="22"
+            />
+            Email
+          </a>
+          <a
+            href="https://www.linkedin.com/in/maxmaillet/"
+            class="list-group-item list-group-item-action border-secondary"
+            aria-current="true"
+          >
+            <img
+              src="https://clipground.com/images/linkedin-clipart-5.jpg"
+              width="32"
+              height="32"
+            />
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/maxmaillet"
+            class="list-group-item list-group-item-action border-secondary"
+          >
+            <img
+              src="https://raw.githubusercontent.com/Automattic/social-logos/trunk/svg-min/github.svg"
+              width="32"
+              height="32"
+            />
+            GitHub
+          </a>
+          <a
+            href="https://music.apple.com/profile/maxmaillet"
+            class="list-group-item list-group-item-action border-secondary"
+          >
+            <img
+              src="https://image.librewiki.net/0/0b/Apple_Music_%EC%95%84%EC%9D%B4%EC%BD%98.svg"
+              width="32"
+              height="32"
+            />
+            Apple Music
+          </a>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
