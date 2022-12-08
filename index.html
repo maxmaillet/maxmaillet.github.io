@@ -18,6 +18,21 @@
       crossorigin="anonymous"
     ></script>
     <script src="prism.js"></script>
+    <script>
+      window.onload = function () {
+        if (window.innerWidth < 400) {
+          let pre = document.querySelectorAll('pre');
+          for (let i = 0; i < pre.length; i++) {
+            pre[i].scrollLeft = 150;
+          }
+        } else if (window.innerWidth < 900) {
+          let pre = document.querySelectorAll('pre');
+          for (let i = 0; i < pre.length; i++) {
+            pre[i].scrollLeft = 100;
+          }
+        }
+      };
+    </script>
     <title>Hire Max Maillet</title>
   </head>
   <body>
@@ -74,7 +89,7 @@
     </nav>
     <div class="bg-dark pb-3 mt-5" id="aboutMe">
       <h1 class="text-center text-light py-3">About Me</h1>
-      <div class="container-fluid col-sm-4 col-lg-3 col-xl-2">
+      <div class="container-fluid col-6 col-sm-4 col-lg-3 col-xl-2">
         <img src="pic.jpg" class="rounded-circle img-fluid" />
       </div>
       <p class="container-fluid text-light col-8 pt-4">
