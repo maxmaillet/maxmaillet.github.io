@@ -23,19 +23,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="prism.js"></script>
-    <script>
-      window.onload = function () {
-        let pre = document.querySelectorAll('pre');
-        for (let i = 0; i < pre.length; i++) {
-          pre[i].scrollLeft = 150;
-        }
-        document
-          .querySelector('.nav-item')
-          .addEventListener('click', function () {
-            document.querySelector('.collapse').classList.add('collapse');
-          });
-      };
-    </script>
     <title>Hire Max Maillet</title>
   </head>
   <body>
@@ -129,16 +116,14 @@
             </div>
             <div class="card-body">
               <pre class="line-numbers match-braces">
-                  <code class="language-css">while (true)
-                    {
-                        int bytesRec = handler.Receive(bytes);
-                        data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                        if (data.IndexOf(eof) > -1)
-                        {
-                            break;
-                        }
-                    }</code>
-                </pre>
+<code class="language-clike">while (true) {
+  int bytesRec = handler.Receive(bytes);
+  data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+  if (data.IndexOf(eof) > -1) {
+    break;
+  }
+}</code>
+</pre>
             </div>
             <div class="card-body">
               <a
@@ -158,28 +143,28 @@
             <div class="card-body">
               <h5 class="card-title">RESTful Database Accessor Web App</h5>
               <p class="card-text">
-                A single page web app I wrote second year to CRUD records in a
-                MySQL database. I chose to use albums for my database because
-                music is cool.
+                A single page Java web app I wrote second year to CRUD records
+                in a MySQL database. I chose to use albums for my database
+                because music is cool.
               </p>
             </div>
             <div class="card-body">
               <pre class="line-numbers match-braces">
-                  <code class="language-css">try {
-                      JSONObject album = new JSONObject(request.getReader().readLine());
-                      conn = ConnectionManager.getConnection(ConnectionParameters.URL, ConnectionParameters.USERNAME, ConnectionParameters.PASSWORD);
-                      stmt = conn.prepareStatement("update albums set title = ?, artist = ?, genre = ?, releaseYear = ? where id = ?");
-                      stmt.setString(1, album.getString("title"));
-                      stmt.setString(2, album.getString("artist"));
-                      stmt.setString(3, album.getString("genre"));
-                      stmt.setInt(4, album.getInt("releaseYear"));
-                      stmt.setInt(5, album.getInt("id"));
-                      int res = stmt.executeUpdate();
-                      response.getWriter().print(res);
-                  } catch (SQLException ex) {
-                      response.getWriter().print(ex);
-                  }</code>
-                </pre>
+<code class="language-java">try {
+  JSONObject album = new JSONObject(request.getReader().readLine());
+  conn = ConnectionManager.getConnection(ConnectionParameters.URL, ConnectionParameters.USERNAME, ConnectionParameters.PASSWORD);
+  stmt = conn.prepareStatement("update albums set title = ?, artist = ?, genre = ?, releaseYear = ? where id = ?");
+  stmt.setString(1, album.getString("title"));
+  stmt.setString(2, album.getString("artist"));
+  stmt.setString(3, album.getString("genre"));
+  stmt.setInt(4, album.getInt("releaseYear"));
+  stmt.setInt(5, album.getInt("id"));
+  int res = stmt.executeUpdate();
+  response.getWriter().print(res);
+} catch (SQLException ex) {
+  response.getWriter().print(ex);
+}</code>
+</pre>
             </div>
             <div class="card-body">
               <a
@@ -202,45 +187,45 @@
               </h5>
               <p class="card-text">
                 A MongoDB database accessor with Mocha and Chai testing I wrote
-                in first year.
+                with JavaScript in first year.
               </p>
             </div>
             <div class="card-body">
               <pre class="line-numbers match-braces">
-                  <code class="language-css">async function addItem(item) {
-                      try {
-                        let exists = await itemExists(item);
-                        if (!exists) {
-                          let client = await ConnectionManager.getConnection();
-                          let collection = client
-                            .db(Constants.DB_NAME)
-                            .collection(Constants.DB_COLLECTION);
-                          await collection.insertOne(item.toJSON());
-                          return true;
-                        } else {
-                          return false;
-                        }
-                      } catch (err) {
-                        throw new Error(`Could not complete addItem!\n${err.message}`);
-                      }
-                    }</code>
-                </pre>
+<code class="language-js">async function addItem(item) {
+  try {
+    let exists = await itemExists(item);
+    if (!exists) {
+      let client = await ConnectionManager.getConnection();
+      let collection = client
+        .db(Constants.DB_NAME)
+        .collection(Constants.DB_COLLECTION);
+      await collection.insertOne(item.toJSON());
+      return true;
+    } else {
+      return false;
+    }
+} catch (err) {
+    throw new Error(`Could not complete addItem!\n${err.message}`);
+  }
+}</code>
+</pre>
             </div>
             <div class="card-body">
               <pre class="line-numbers match-braces">
-                  <code class="language-css">describe("Errors: operations that should fail", function () {
-                      it("getItemByID returns null if item does not exist", async function () {
-                          let item = await acc.getItemByID(testItems.badItem.id);
-                          assert.equal(item, null);
-                      });
-              
-                      it("addItem returns false, and does not change the database, if item already exists", async function () {
-                          let result = await acc.addItem(testItems.goodItem);
-                          let exists = await acc.itemExists(testItems.goodItem);
-                          assert.isFalse(result);
-                          assert.isTrue(exists);
-                      });</code>
-                </pre>
+<code class="language-js">describe("Errors: operations that should fail", function () {
+  it("getItemByID returns null if item does not exist", async function () {
+      let item = await acc.getItemByID(testItems.badItem.id);
+      assert.equal(item, null);
+  });
+
+  it("addItem returns false, and does not change the database, if item already exists", async function () {
+      let result = await acc.addItem(testItems.goodItem);
+      let exists = await acc.itemExists(testItems.goodItem);
+      assert.isFalse(result);
+      assert.isTrue(exists);
+  });</code>
+</pre>
             </div>
             <div class="card-body">
               <a
@@ -266,47 +251,47 @@
             </div>
             <div class="card-body">
               <pre class="line-numbers match-braces">
-                  <code class="language-css">app.post('/api/menuitems/:key(\\d{3})', async function (request, response) {
-                      let item;
-                      try {
-                        let menuData = request.body;
-                        item = new MenuItem(
-                          menuData.id,
-                          menuData.category,
-                          menuData.description,
-                          menuData.price,
-                          menuData.vegetarian
-                        );
-                      } catch (err) {
-                        response
-                          .status(400)
-                          .json({err: `MenuItem constructor error: ${err}`, data: null});
-                        return;
-                      }
-                      try {
-                        let exists = await acc.itemExists(item);
-                        if (!exists) {
-                          let ok = await acc.addItem(item);
-                          if (ok) {
-                            response.status(201).json({err: null, data: true});
-                          } else {
-                            response
-                              .status(409)
-                              .json({err: `item ${item.id} already exists`, data: null});
-                          }
-                        } else {
-                          response
-                            .status(409)
-                            .json({err: `item ${item.id} already exists`, data: null});
-                        }
-                      } catch (err) {
-                        response.status(500).json({
-                          err: `Add aborted: ${err}`,
-                          data: null,
-                        });
-                      }
-                    });</code>
-                </pre>
+<code class="language-php">app.post('/api/menuitems/:key(\\d{3})', async function (request, response) {
+  let item;
+  try {
+    let menuData = request.body;
+    item = new MenuItem(
+      menuData.id,
+      menuData.category,
+      menuData.description,
+      menuData.price,
+      menuData.vegetarian
+    );
+  } catch (err) {
+    response
+      .status(400)
+      .json({err: `MenuItem constructor error: ${err}`, data: null});
+    return;
+  }
+  try {
+    let exists = await acc.itemExists(item);
+    if (!exists) {
+      let ok = await acc.addItem(item);
+      if (ok) {
+        response.status(201).json({err: null, data: true});
+      } else {
+        response
+          .status(409)
+          .json({err: `item ${item.id} already exists`, data: null});
+      }
+    } else {
+      response
+        .status(409)
+        .json({err: `item ${item.id} already exists`, data: null});
+    }
+  } catch (err) {
+    response.status(500).json({
+      err: `Add aborted: ${err}`,
+      data: null,
+    });
+  }
+});</code>
+</pre>
             </div>
             <div class="card-body">
               <a
@@ -335,31 +320,31 @@
             </div>
             <div class="card-body">
               <pre class="line-numbers match-braces">
-                  <code class="language-css">function addAlbum($album) {
-                      $success;
-                      try {
-                          $conn = connect_db();
-                          $stmt = $conn->prepare('insert into Albums(title, artist, genre, releaseYear) values(?, ?, ?, ?)');
-                          $title = $album->get_title();
-                          $artist = $album->get_artist();
-                          $genre = $album->get_genre();
-                          $releaseYear = $album->get_releaseYear();
-                          $stmt->bindParam(1, $title);
-                          $stmt->bindParam(2, $artist);
-                          $stmt->bindParam(3, $genre);
-                          $stmt->bindParam(4, $releaseYear);
-                          $stmt->execute();
-                          $success = $stmt->rowCount();
-                      } catch (PDOException $e) {
-                          $success = 0;
-                      } finally {
-                          if ($stmt) {
-                              $stmt->closeCursor();
-                          }
-                      }
-                      echo $success;
-                  }</code>
-                </pre>
+<code class="language-css">function addAlbum($album) {
+  $success;
+  try {
+      $conn = connect_db();
+      $stmt = $conn->prepare('insert into Albums(title, artist, genre, releaseYear) values(?, ?, ?, ?)');
+      $title = $album->get_title();
+      $artist = $album->get_artist();
+      $genre = $album->get_genre();
+      $releaseYear = $album->get_releaseYear();
+      $stmt->bindParam(1, $title);
+      $stmt->bindParam(2, $artist);
+      $stmt->bindParam(3, $genre);
+      $stmt->bindParam(4, $releaseYear);
+      $stmt->execute();
+      $success = $stmt->rowCount();
+  } catch (PDOException $e) {
+      $success = 0;
+  } finally {
+      if ($stmt) {
+          $stmt->closeCursor();
+      }
+  }
+  echo $success;
+}</code>
+</pre>
             </div>
             <div class="card-body">
               <a
