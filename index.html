@@ -20,17 +20,15 @@
     <script src="prism.js"></script>
     <script>
       window.onload = function () {
-        if (window.innerWidth < 400) {
-          let pre = document.querySelectorAll('pre');
-          for (let i = 0; i < pre.length; i++) {
-            pre[i].scrollLeft = 150;
-          }
-        } else if (window.innerWidth < 900) {
-          let pre = document.querySelectorAll('pre');
-          for (let i = 0; i < pre.length; i++) {
-            pre[i].scrollLeft = 100;
-          }
+        let pre = document.querySelectorAll('pre');
+        for (let i = 0; i < pre.length; i++) {
+          pre[i].scrollLeft = 150;
         }
+        document
+          .querySelector('.nav-item')
+          .addEventListener('click', function () {
+            document.querySelector('.collapse').classList.add('collapse');
+          });
       };
     </script>
     <title>Hire Max Maillet</title>
@@ -72,12 +70,16 @@
                 Portfolio
               </a>
               <ul class="dropdown-menu bg-dark">
-                <li><a class="dropdown-item text-light" href="#">C#</a></li>
+                <li><a class="dropdown-item text-light" href="#c">C#</a></li>
                 <li>
-                  <a class="dropdown-item text-light" href="#">JavaScript</a>
+                  <a class="dropdown-item text-light" href="#java">Java</a>
                 </li>
-                <li><a class="dropdown-item text-light" href="#">Java</a></li>
-                <li><a class="dropdown-item text-light" href="#">PHP</a></li>
+                <li>
+                  <a class="dropdown-item text-light" href="#javascript">
+                    JavaScript
+                  </a>
+                </li>
+                <li><a class="dropdown-item text-light" href="#php">PHP</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -107,30 +109,195 @@
     </div>
     <div class="mb-5" id="portfolio">
       <h1 class="text-center pt-1">Portfolio</h1>
-      <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">My Project</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+      <div class="container-fluid" id="c">
+        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Networking Console App</h5>
+              <p class="card-text">
+                A console app I wrote in C# for my final exam in networking
+                first year.
+              </p>
+            </div>
+            <div class="card-body">
+              <pre class="line-numbers match-braces">
+                  <code class="language-css">// An incoming connection needs to be processed.  
+                    while (true)
+                    {
+                        int bytesRec = handler.Receive(bytes);
+                        data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                        if (data.IndexOf(eof) > -1)
+                        {
+                            break;
+                        }
+                    }</code>
+                </pre>
+            </div>
+            <div class="card-body">
+              <a href="#" class="btn btn-secondary">
+                View Full Project on GitHub
+              </a>
+            </div>
           </div>
-          <div class="card-body">
-            <pre class="line-numbers match-braces">
-                <code class="language-css">
-                 #div1 {
-                    background-color: #ff0000;
-                    color: #ffffff;
-                    font-size: 16px;
-                    text-align: center;
-                    border-radius: 10px;
-                 }
-                </code>
-              </pre>
+        </div>
+      </div>
+      <div class="container-fluid" id="java">
+        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Database Accessor Web App</h5>
+              <p class="card-text">
+                A single page web app I wrote second year to CRUD records in a
+                MySQL database. I chose to use albums for my database because
+                music is cool.
+              </p>
+            </div>
+            <div class="card-body">
+              <pre class="line-numbers match-braces">
+                  <code class="language-css">try {
+                      JSONObject album = new JSONObject(request.getReader().readLine());
+                      conn = ConnectionManager.getConnection(ConnectionParameters.URL, ConnectionParameters.USERNAME, ConnectionParameters.PASSWORD);
+                      stmt = conn.prepareStatement("update albums set title = ?, artist = ?, genre = ?, releaseYear = ? where id = ?");
+                      stmt.setString(1, album.getString("title"));
+                      stmt.setString(2, album.getString("artist"));
+                      stmt.setString(3, album.getString("genre"));
+                      stmt.setInt(4, album.getInt("releaseYear"));
+                      stmt.setInt(5, album.getInt("id"));
+                      int res = stmt.executeUpdate();
+                      response.getWriter().print(res);
+                  } catch (SQLException ex) {
+                      response.getWriter().print(ex);
+                  }</code>
+                </pre>
+            </div>
+            <div class="card-body">
+              <a
+                href="https://github.com/maxmaillet/portfolio/tree/main/MailletAssignment3%20-%20Adv%20Java"
+                class="btn btn-secondary"
+              >
+                View Full Project on GitHub
+              </a>
+            </div>
           </div>
-          <div class="card-body">
-            <a href="#" class="btn btn-secondary">View on GitHub</a>
+        </div>
+      </div>
+      <div class="container-fluid" id="javascript">
+        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                Database Accessor with Mocha and Chai Testing
+              </h5>
+              <p class="card-text">
+                A MongoDB database accessor with Mocha and Chai testing I wrote
+                in first year.
+              </p>
+            </div>
+            <div class="card-body">
+              <pre class="line-numbers match-braces">
+                  <code class="language-css">async function addItem(item) {
+                      try {
+                        let exists = await itemExists(item);
+                        if (!exists) {
+                          let client = await ConnectionManager.getConnection();
+                          let collection = client
+                            .db(Constants.DB_NAME)
+                            .collection(Constants.DB_COLLECTION);
+                          await collection.insertOne(item.toJSON());
+                          return true;
+                        } else {
+                          return false;
+                        }
+                      } catch (err) {
+                        throw new Error(`Could not complete addItem!\n${err.message}`);
+                      }
+                    }</code>
+                </pre>
+            </div>
+            <div class="card-body">
+              <pre class="line-numbers match-braces">
+                  <code class="language-css">describe("Errors: operations that should fail", function () {
+                      it("getItemByID returns null if item does not exist", async function () {
+                          let item = await acc.getItemByID(testItems.badItem.id);
+                          assert.equal(item, null);
+                      });
+              
+                      it("addItem returns false, and does not change the database, if item already exists", async function () {
+                          let result = await acc.addItem(testItems.goodItem);
+                          let exists = await acc.itemExists(testItems.goodItem);
+                          assert.isFalse(result);
+                          assert.isTrue(exists);
+                      });</code>
+                </pre>
+            </div>
+            <div class="card-body">
+              <a
+                href="https://github.com/maxmaillet/portfolio/tree/main/MailletAssignment2%20-%20JavaScript"
+                class="btn btn-secondary"
+              >
+                View Full Project on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">My Project</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+            <div class="card-body">
+              <pre class="line-numbers match-braces">
+                  <code class="language-css">
+                   #div1 {
+                      background-color: #ff0000;
+                      color: #ffffff;
+                      font-size: 16px;
+                      text-align: center;
+                      border-radius: 10px;
+                   }
+                  </code>
+                </pre>
+            </div>
+            <div class="card-body">
+              <a href="#" class="btn btn-secondary">
+                View Full Project on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid" id="php">
+        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">My Project</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+            <div class="card-body">
+              <pre class="line-numbers match-braces">
+                  <code class="language-css">
+                   #div1 {
+                      background-color: #ff0000;
+                      color: #ffffff;
+                      font-size: 16px;
+                      text-align: center;
+                      border-radius: 10px;
+                   }
+                  </code>
+                </pre>
+            </div>
+            <div class="card-body">
+              <a href="#" class="btn btn-secondary">
+                View Full Project on GitHub
+              </a>
+            </div>
           </div>
         </div>
       </div>
