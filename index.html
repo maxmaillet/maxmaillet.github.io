@@ -52,7 +52,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a
-                class="nav-link activej text-light"
+                class="nav-link text-light"
                 aria-current="page"
                 href="#aboutMe"
               >
@@ -89,6 +89,7 @@
         </div>
       </div>
     </nav>
+
     <div class="bg-dark pb-3 mt-5" id="aboutMe">
       <h1 class="text-center text-light py-3">About Me</h1>
       <div class="container-fluid col-6 col-sm-4 col-lg-3 col-xl-2">
@@ -107,10 +108,12 @@
         me anytime.
       </p>
     </div>
+
     <div class="mb-5" id="portfolio">
       <h1 class="text-center pt-1">Portfolio</h1>
+
       <div class="container-fluid" id="c">
-        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+        <div class="container-fluid col-11 col-sm-10 col-xl-9 my-2">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Networking Console App</h5>
@@ -121,8 +124,7 @@
             </div>
             <div class="card-body">
               <pre class="line-numbers match-braces">
-                  <code class="language-css">// An incoming connection needs to be processed.  
-                    while (true)
+                  <code class="language-css">while (true)
                     {
                         int bytesRec = handler.Receive(bytes);
                         data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
@@ -134,18 +136,22 @@
                 </pre>
             </div>
             <div class="card-body">
-              <a href="#" class="btn btn-secondary">
+              <a
+                href="https://github.com/maxmaillet/portfolio/tree/main/MailletFinalExam%20-%20Networking"
+                class="btn btn-secondary"
+              >
                 View Full Project on GitHub
               </a>
             </div>
           </div>
         </div>
       </div>
+
       <div class="container-fluid" id="java">
-        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+        <div class="container-fluid col-11 col-sm-10 col-xl-9 my-2">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Database Accessor Web App</h5>
+              <h5 class="card-title">RESTful Database Accessor Web App</h5>
               <p class="card-text">
                 A single page web app I wrote second year to CRUD records in a
                 MySQL database. I chose to use albums for my database because
@@ -181,8 +187,9 @@
           </div>
         </div>
       </div>
+
       <div class="container-fluid" id="javascript">
-        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+        <div class="container-fluid col-11 col-sm-10 col-xl-9 my-2">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">
@@ -240,61 +247,120 @@
             </div>
           </div>
         </div>
-        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+
+        <div class="container-fluid col-11 col-sm-10 col-xl-9 my-2">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">My Project</h5>
+              <h5 class="card-title">
+                RESTful Database Accessor Web App with Express.js Routing
+              </h5>
               <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                A RESTful web app with I wrote in first year using Express.js
+                for routing and a MongoDB database.
               </p>
             </div>
             <div class="card-body">
               <pre class="line-numbers match-braces">
-                  <code class="language-css">
-                   #div1 {
-                      background-color: #ff0000;
-                      color: #ffffff;
-                      font-size: 16px;
-                      text-align: center;
-                      border-radius: 10px;
-                   }
-                  </code>
+                  <code class="language-css">app.post('/api/menuitems/:key(\\d{3})', async function (request, response) {
+                      let item;
+                      try {
+                        let menuData = request.body;
+                        item = new MenuItem(
+                          menuData.id,
+                          menuData.category,
+                          menuData.description,
+                          menuData.price,
+                          menuData.vegetarian
+                        );
+                      } catch (err) {
+                        response
+                          .status(400)
+                          .json({err: `MenuItem constructor error: ${err}`, data: null});
+                        return;
+                      }
+                      try {
+                        let exists = await acc.itemExists(item);
+                        if (!exists) {
+                          let ok = await acc.addItem(item);
+                          if (ok) {
+                            response.status(201).json({err: null, data: true});
+                          } else {
+                            response
+                              .status(409)
+                              .json({err: `item ${item.id} already exists`, data: null});
+                          }
+                        } else {
+                          response
+                            .status(409)
+                            .json({err: `item ${item.id} already exists`, data: null});
+                        }
+                      } catch (err) {
+                        response.status(500).json({
+                          err: `Add aborted: ${err}`,
+                          data: null,
+                        });
+                      }
+                    });</code>
                 </pre>
             </div>
             <div class="card-body">
-              <a href="#" class="btn btn-secondary">
+              <a
+                href="https://github.com/maxmaillet/portfolio/tree/main/MailletAssignment4%20-%20JavaScript"
+                class="btn btn-secondary"
+              >
                 View Full Project on GitHub
               </a>
             </div>
           </div>
         </div>
       </div>
+
       <div class="container-fluid" id="php">
-        <div class="container-fluid col-11 col-sm-9 col-md-8 col-lg-6 my-2">
+        <div class="container-fluid col-11 col-sm-10 col-xl-9 my-2">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">My Project</h5>
+              <h5 class="card-title">
+                RESTful Database Web App III: Return of the API
+              </h5>
               <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                A RESTful database web app for albums but this one is written in
+                PHP. I know how to make quiz apps too so I'm a bit of a two way
+                threat like Jayson Tatum or Kawhi Leonard.
               </p>
             </div>
             <div class="card-body">
               <pre class="line-numbers match-braces">
-                  <code class="language-css">
-                   #div1 {
-                      background-color: #ff0000;
-                      color: #ffffff;
-                      font-size: 16px;
-                      text-align: center;
-                      border-radius: 10px;
-                   }
-                  </code>
+                  <code class="language-css">function addAlbum($album) {
+                      $success;
+                      try {
+                          $conn = connect_db();
+                          $stmt = $conn->prepare('insert into Albums(title, artist, genre, releaseYear) values(?, ?, ?, ?)');
+                          $title = $album->get_title();
+                          $artist = $album->get_artist();
+                          $genre = $album->get_genre();
+                          $releaseYear = $album->get_releaseYear();
+                          $stmt->bindParam(1, $title);
+                          $stmt->bindParam(2, $artist);
+                          $stmt->bindParam(3, $genre);
+                          $stmt->bindParam(4, $releaseYear);
+                          $stmt->execute();
+                          $success = $stmt->rowCount();
+                      } catch (PDOException $e) {
+                          $success = 0;
+                      } finally {
+                          if ($stmt) {
+                              $stmt->closeCursor();
+                          }
+                      }
+                      echo $success;
+                  }</code>
                 </pre>
             </div>
             <div class="card-body">
-              <a href="#" class="btn btn-secondary">
+              <a
+                href="https://github.com/maxmaillet/portfolio/tree/main/MailletAssignment7%20-%20PHP"
+                class="btn btn-secondary"
+              >
                 View Full Project on GitHub
               </a>
             </div>
@@ -302,6 +368,7 @@
         </div>
       </div>
     </div>
+
     <div class="bg-dark pb-5" id="contactMe">
       <h1 class="text-center text-light pt-1">Contact Me</h1>
       <div class="container-fluid col-6">
